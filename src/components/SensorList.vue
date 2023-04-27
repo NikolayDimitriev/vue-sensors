@@ -17,6 +17,7 @@ export default {
   components: {
     SensorItem,
   },
+  emits: ["remove"],
   props: {
     sensors: {
       type: Array,

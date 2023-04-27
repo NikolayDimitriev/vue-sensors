@@ -17,20 +17,38 @@ export default {
   },
   data() {
     return {
-      sensors: sensorsData,
+      sensors: [],
     };
   },
 
   methods: {
     createNewSensor(sensor) {
       this.sensors.push(sensor);
+      this.updateLocalStorage();
     },
 
     removeSensor(sensor) {
       this.sensors = this.sensors.filter(
         (s) => s.sensor_id !== sensor.sensor_id
       );
+      this.updateLocalStorage();
     },
+    updateLocalStorage() {
+      const parsed = JSON.stringify(this.sensors);
+      localStorage.setItem("data", parsed);
+    },
+  },
+  mounted() {
+    if (localStorage.getItem("data")) {
+      try {
+        this.sensors = JSON.parse(localStorage.getItem("data"));
+      } catch (e) {
+        localStorage.removeItem("data");
+        this.sensors = sensorsData;
+      }
+    } else {
+      this.sensors = sensorsData;
+    }
   },
 };
 </script>

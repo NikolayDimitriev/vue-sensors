@@ -34,7 +34,7 @@ export default {
 
   methods: {
     createNewSensor() {
-      this.sensor.id = Date.now();
+      this.sensor.sensor_id = Date.now();
 
       this.$emit("create", this.sensor);
 

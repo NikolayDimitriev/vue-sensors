@@ -1,12 +1,13 @@
 <template>
   <div class="sensor">
     <div>
-      <div><strong>Название</strong> {{ sensor.name }}</div>
+      <div><strong>Идентификатор:</strong> {{ sensor.sensor_id }}</div>
+      <div><strong>Название:</strong> {{ sensor.name }}</div>
       <div v-if="sensor.temperature">
-        <strong>Температура</strong> {{ sensor.temperature }}
+        <strong>Температура:</strong> {{ sensor.temperature }}
       </div>
       <div v-if="sensor.humidity">
-        <strong>Влажность</strong> {{ sensor.humidity }}
+        <strong>Влажность:</strong> {{ sensor.humidity }}
       </div>
     </div>
     <div class="sensor__btns">
