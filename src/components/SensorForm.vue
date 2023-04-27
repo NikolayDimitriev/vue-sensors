@@ -1,25 +1,22 @@
 <template>
   <form class="form" @submit.prevent="createNewSensor">
     <h3>Добавить новый датчик</h3>
-    <input
+    <my-input
       v-model="sensor.name"
-      class="input"
-      type="text"
+      class="form__input"
       placeholder="Название"
     />
-    <input
+    <my-input
       v-model="sensor.temperature"
-      class="input"
-      type="number"
+      class="form__input"
       placeholder="Температура"
     />
-    <input
+    <my-input
       v-model="sensor.humidity"
-      class="input"
-      type="number"
+      class="form__input"
       placeholder="Влажность"
     />
-    <button class="button" type="submit">Добавить</button>
+    <my-button class="btn" type="submit">Добавить</my-button>
   </form>
 </template>
 
@@ -57,20 +54,14 @@ export default {
   flex-direction: column;
 }
 
-.input {
+.form__input {
   width: 100%;
-  border: 1px solid teal;
-  padding: 10px 15px;
   margin-top: 15px;
-  border-radius: 10px;
 }
 
-.button {
+.btn {
   margin-top: 15px;
   align-self: flex-end;
-  padding: 10px 15px;
-  background: none;
   border: 1px solid teal;
-  border-radius: 10px;
 }
 </style>
