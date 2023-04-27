@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <sensor-form @create="createNewSensor"></sensor-form>
-    <sensor-list :sensors="sensors"></sensor-list>
+    <sensor-list :sensors="sensors" @remove="removeSensor"></sensor-list>
   </div>
 </template>
 
@@ -27,6 +27,12 @@ export default {
   methods: {
     createNewSensor(sensor) {
       this.sensors.push(sensor);
+    },
+
+    removeSensor(sensor) {
+      this.sensors = this.sensors.filter(
+        (s) => s.sensor_id !== sensor.sensor_id
+      );
     },
   },
 };
