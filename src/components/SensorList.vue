@@ -1,6 +1,5 @@
 <template>
-  <h1>Список датчиков</h1>
-  <section v-if="sensors.length > 0">
+  <section v-if="sensors.length > 0" class="sensor">
     <sensor-item
       v-for="sensor in sensors"
       :sensor="sensor"
@@ -28,6 +27,12 @@ export default {
 </script>
 
 <style scoped>
+.sensor {
+  padding: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 .empty {
   width: 100%;
   height: 200px;

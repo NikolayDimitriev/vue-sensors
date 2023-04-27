@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 .input {
-  border: 1px solid teal;
+  border: 1px solid #3369f3;
   padding: 10px 15px;
   border-radius: 10px;
   outline: none;

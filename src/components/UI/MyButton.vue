@@ -11,9 +11,9 @@ export default {
 <style scoped>
 .button {
   padding: 10px 15px;
-  background: none;
   border-radius: 10px;
   cursor: pointer;
   outline: none;
+  border: none;
 }
 </style>

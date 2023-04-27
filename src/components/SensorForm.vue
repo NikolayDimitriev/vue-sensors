@@ -1,6 +1,6 @@
 <template>
   <form class="form" @submit.prevent="createNewSensor">
-    <h2 class="form__title">Добавить новый датчик</h2>
+    <h3 class="form__title">Добавить новый датчик</h3>
     <my-input
       v-model="sensor.name"
       class="form__input"
@@ -97,6 +97,7 @@ export default {
 .form {
   display: flex;
   flex-direction: column;
+  max-width: 350px;
 }
 
 .form__title {
@@ -113,8 +114,9 @@ export default {
 }
 
 .btn {
-  margin-top: 15px;
-  align-self: flex-end;
-  border: 1px solid teal;
+  align-self: center;
+  background-color: #3369f3;
+  color: white;
+  border: 1px solid #3369f3;
 }
 </style>

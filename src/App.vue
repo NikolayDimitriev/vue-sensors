@@ -1,6 +1,13 @@
 <template>
   <div class="container">
-    <sensor-form @create="createNewSensor"></sensor-form>
+    <header class="header">
+      <h1 class="header__title">Список датчиков</h1>
+      <my-button class="header__btn" @click="showModal">Добавить</my-button>
+    </header>
+
+    <my-modal v-model:isShow="isModalShow">
+      <sensor-form @create="createNewSensor"></sensor-form>
+    </my-modal>
     <sensor-list :sensors="sensors" @remove="removeSensor"></sensor-list>
   </div>
 </template>
@@ -18,12 +25,14 @@ export default {
   data() {
     return {
       sensors: [],
+      isModalShow: false,
     };
   },
 
   methods: {
     createNewSensor(sensor) {
       this.sensors.push(sensor);
+      this.isModalShow = false;
       this.updateLocalStorage();
     },
 
@@ -36,6 +45,9 @@ export default {
     updateLocalStorage() {
       const parsed = JSON.stringify(this.sensors);
       localStorage.setItem("data", parsed);
+    },
+    showModal() {
+      this.isModalShow = true;
     },
   },
   mounted() {
@@ -61,6 +73,27 @@ export default {
 }
 
 .container {
-  padding: 20px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.header__btn {
+  background-color: #3369f3;
+  color: white;
 }
 </style>
