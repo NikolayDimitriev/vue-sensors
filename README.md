@@ -1,7 +1,9 @@
 # Тестовое задание НВП Болид
 
 Стек: Vue. 
+
 [ТЗ](https://observant-resistance-a1d.notion.site/866da5ab78644fa7a023e024f0f038ea)
+
 [Netlify](https://spontaneous-puffpuff-f517a6.netlify.app)
 
 ## Установка
