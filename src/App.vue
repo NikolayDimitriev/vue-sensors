@@ -8,7 +8,11 @@
     <my-modal v-model:isShow="isModalShow">
       <sensor-form @create="createNewSensor"></sensor-form>
     </my-modal>
-    <sensor-list :sensors="sensors" @remove="removeSensor"></sensor-list>
+    <sensor-list
+      :sensors="sensors"
+      @remove="removeSensor"
+      @update="updateSensor"
+    ></sensor-list>
   </div>
 </template>
 
@@ -40,6 +44,15 @@ export default {
       this.sensors = this.sensors.filter(
         (s) => s.sensor_id !== sensor.sensor_id
       );
+      this.updateLocalStorage();
+    },
+    updateSensor(sensor) {
+      this.sensors = this.sensors.map((s) => {
+        if (s.sensor_id === sensor.sensor_id) {
+          return sensor;
+        }
+        return s;
+      });
       this.updateLocalStorage();
     },
     updateLocalStorage() {
@@ -95,5 +108,11 @@ export default {
 .header__btn {
   background-color: #3369f3;
   color: white;
+}
+
+@media (max-width: 600px) {
+  .header__title {
+    font-size: 24px;
+  }
 }
 </style>

@@ -5,22 +5,44 @@
       :sensor="sensor"
       :key="sensor.id"
       @remove="$emit('remove', sensor)"
+      @openModal="handleModal"
     />
+    <my-modal v-model:isShow="isModalShow">
+      <edit-form :sensor="openedSensor" @update="updateSensor"></edit-form>
+    </my-modal>
   </section>
   <section v-else class="empty">Список датчиков пуст</section>
 </template>
 
 <script>
 import SensorItem from "@/components/SensorItem.vue";
+import EditForm from "@/components/EditForm.vue";
 export default {
   components: {
     SensorItem,
+    EditForm,
   },
-  emits: ["remove"],
+  emits: ["remove", "openModal", "update"],
   props: {
     sensors: {
       type: Array,
       required: true,
+    },
+  },
+  data() {
+    return {
+      isModalShow: false,
+      openedSensor: null,
+    };
+  },
+  methods: {
+    handleModal(sensor) {
+      this.openedSensor = sensor;
+      this.isModalShow = !this.isModalShow;
+    },
+    updateSensor(sensor) {
+      this.$emit("update", sensor);
+      this.handleModal(null);
     },
   },
 };
@@ -33,9 +55,16 @@ export default {
   flex-wrap: wrap;
   gap: 10px;
 }
+
+@media (max-width: 600px) {
+  .sensor {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .empty {
   width: 100%;
-  height: 200px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;

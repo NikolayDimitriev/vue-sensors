@@ -9,11 +9,14 @@
       <div v-if="sensor.humidity"><b>Влажность:</b> {{ sensor.humidity }}%</div>
     </div>
     <div class="sensor__btns">
-      <my-button class="btn--edit">Редактировать</my-button>
+      <my-button class="btn--edit" @click="$emit('openModal', sensor)"
+        >Редактировать</my-button
+      >
       <my-button class="btn" @click="$emit('remove', sensor)"
         >Удалить</my-button
       >
     </div>
+    <slot></slot>
   </article>
 </template>
 

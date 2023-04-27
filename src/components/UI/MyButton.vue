@@ -12,8 +12,13 @@ export default {
 .button {
   padding: 10px 15px;
   border-radius: 10px;
-  cursor: pointer;
   outline: none;
   border: none;
+}
+
+@media (min-width: 992px) {
+  .button {
+    cursor: pointer;
+  }
 }
 </style>
