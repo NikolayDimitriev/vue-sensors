@@ -1,24 +1,21 @@
-# vue-sensors
+# Тестовое задание НВП Болид
 
-## Project setup
-```
-npm install
-```
+Стек: Vue
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Установка
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- `npm install` - установка зависимостей
+- `npm run serve` - запуск версии для разработки
+- `npm run build` - сборка продакт версии
 
-### Lints and fixes files
-```
-npm run lint
-```
+# Что сделано?
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Список всех датчиков со всеми параметрами
+- Форма для добавления новых датчиков
+- Кнопка для удаления датчиков
+- Список датчиков сохраняется в localStorage, что бы не терять информацию при перезагрузке
+- Отсутствующие поля датчика не отображаются
+- Валидация вводимых данных:
+  - Для имени событий, нет никаких ограничений, если поле пустое подставляется "N/A",
+  - Для поля температуры, проверка на число (можно и с плавающей точкой)
+  - Для поля влажность, проверка на число + проверка на 0 < humidity < 100

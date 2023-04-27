@@ -1,18 +1,26 @@
 <template>
   <form class="form" @submit.prevent="createNewSensor">
-    <h3>Добавить новый датчик</h3>
+    <h2 class="form__title">Добавить новый датчик</h2>
     <my-input
       v-model="sensor.name"
       class="form__input"
-      placeholder="Название"
+      placeholder="Имя события"
     />
+    <label v-if="errors.temperature" for="temperature" class="form__label">{{
+      errors.temperature
+    }}</label>
     <my-input
       v-model="sensor.temperature"
+      id="temperature"
       class="form__input"
       placeholder="Температура"
     />
+    <label v-if="errors.humidity" for="humidity" class="form__label">{{
+      errors.humidity
+    }}</label>
     <my-input
       v-model="sensor.humidity"
+      id="humidity"
       class="form__input"
       placeholder="Влажность"
     />
@@ -29,20 +37,57 @@ export default {
         temperature: "",
         humidity: "",
       },
+      errors: {},
     };
   },
 
   methods: {
     createNewSensor() {
-      this.sensor.sensor_id = Date.now();
+      this.errors = {};
 
-      this.$emit("create", this.sensor);
+      if (
+        this.sensor.temperature !== "" &&
+        !this.isNumber(this.sensor.temperature)
+      ) {
+        this.errors.temperature = "Неверный формат температуры";
+      }
+
+      if (
+        (this.sensor.humidity !== "" && !this.isNumber(this.sensor.humidity)) ||
+        this.sensor.humidity < 0 ||
+        this.sensor.humidity > 100
+      ) {
+        this.errors.humidity = "Неверный данные влажности";
+      }
+
+      if (Object.keys(this.errors).length > 0) {
+        return;
+      }
+
+      let temperature = this.sensor.temperature.replace("+", "");
+      temperature = temperature.replace(",", ".");
+
+      let humidity = this.sensor.humidity.replace("+", "");
+      humidity = humidity.replace(",", ".");
+
+      const newSensor = {
+        sensor_id: Date.now(),
+        name: this.sensor.name || "N/A",
+        temperature,
+        humidity,
+      };
+
+      this.$emit("create", newSensor);
 
       this.sensor = {
         name: "",
         temperature: "",
         humidity: "",
       };
+    },
+    isNumber(field) {
+      const reg = new RegExp(/^[+-]?\d+([.,]?\d+)?$/);
+      return reg.test(field);
     },
   },
 };
@@ -54,9 +99,17 @@ export default {
   flex-direction: column;
 }
 
+.form__title {
+  margin-bottom: 15px;
+}
+
 .form__input {
   width: 100%;
-  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form__label {
+  color: red;
 }
 
 .btn {

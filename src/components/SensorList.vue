@@ -1,14 +1,14 @@
 <template>
-  <h2>Список датчиков</h2>
-  <div v-if="sensors.length > 0">
+  <h1>Список датчиков</h1>
+  <section v-if="sensors.length > 0">
     <sensor-item
       v-for="sensor in sensors"
       :sensor="sensor"
       :key="sensor.id"
       @remove="$emit('remove', sensor)"
     />
-  </div>
-  <div v-else class="empty">Список датчиков пуст</div>
+  </section>
+  <section v-else class="empty">Список датчиков пуст</section>
 </template>
 
 <script>

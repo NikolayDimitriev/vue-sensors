@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="container">
     <sensor-form @create="createNewSensor"></sensor-form>
     <sensor-list :sensors="sensors" @remove="removeSensor"></sensor-list>
   </div>
@@ -60,7 +60,7 @@ export default {
   box-sizing: border-box;
 }
 
-.app {
+.container {
   padding: 20px;
 }
 </style>

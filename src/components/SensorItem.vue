@@ -1,21 +1,19 @@
 <template>
-  <div class="sensor">
+  <article class="sensor">
     <div>
-      <div><strong>Идентификатор:</strong> {{ sensor.sensor_id }}</div>
-      <div><strong>Название:</strong> {{ sensor.name }}</div>
+      <div><b>ID датчика:</b> {{ sensor.sensor_id }}</div>
+      <div><b>Имя событий:</b> {{ sensor.name }}</div>
       <div v-if="sensor.temperature">
-        <strong>Температура:</strong> {{ sensor.temperature }}
+        <b>Температура:</b> {{ sensor.temperature }}°C
       </div>
-      <div v-if="sensor.humidity">
-        <strong>Влажность:</strong> {{ sensor.humidity }}
-      </div>
+      <div v-if="sensor.humidity"><b>Влажность:</b> {{ sensor.humidity }}%</div>
     </div>
     <div class="sensor__btns">
       <my-button class="btn" @click="$emit('remove', sensor)"
         >Удалить</my-button
       >
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
