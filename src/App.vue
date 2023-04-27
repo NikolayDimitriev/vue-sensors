@@ -8,6 +8,7 @@
 <script>
 import SensorForm from "@/components/SensorForm.vue";
 import SensorList from "@/components/SensorList.vue";
+import sensorsData from "@/mock/events.json";
 
 export default {
   components: {
@@ -16,11 +17,7 @@ export default {
   },
   data() {
     return {
-      sensors: [
-        { sensor_id: 1, name: "JavaScript", temperature: 20, humidity: 25 },
-        { sensor_id: 2, name: "TypeScript", temperature: 20, humidity: 25 },
-        { sensor_id: 3, name: "Vue", temperature: 20, humidity: 25 },
-      ],
+      sensors: sensorsData,
     };
   },
 

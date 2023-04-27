@@ -2,8 +2,12 @@
   <div class="sensor">
     <div>
       <div><strong>Название</strong> {{ sensor.name }}</div>
-      <div><strong>Температура</strong> {{ sensor.temperature }}</div>
-      <div><strong>Влажность</strong> {{ sensor.humidity }}</div>
+      <div v-if="sensor.temperature">
+        <strong>Температура</strong> {{ sensor.temperature }}
+      </div>
+      <div v-if="sensor.humidity">
+        <strong>Влажность</strong> {{ sensor.humidity }}
+      </div>
     </div>
     <div class="sensor__btns">
       <my-button class="btn" @click="$emit('remove', sensor)"
