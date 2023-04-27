@@ -1,6 +1,7 @@
 # Тестовое задание НВП Болид
 
-Стек: Vue
+Стек: Vue. 
+[ТЗ](https://observant-resistance-a1d.notion.site/866da5ab78644fa7a023e024f0f038ea)
 
 ## Установка
 
@@ -20,4 +21,3 @@
   - Для поля температуры, проверка на число (можно и с плавающей точкой)
   - Для поля влажность, проверка на число + проверка на 0 < humidity < 100
   
-[ТЗ](https://observant-resistance-a1d.notion.site/866da5ab78644fa7a023e024f0f038ea)
